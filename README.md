@@ -1,2 +1,2 @@
-# db_less_5
-Исходники для занятия #5
+# DB HSE Course  
+Alisa Vyshegorodtseva BSE205
