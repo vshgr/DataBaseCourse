@@ -1,14 +1,40 @@
 version: "3.9"
 services:
-  postgres:
-    image: postgres:latest
+  library:
+    image: postgres:14.5
     environment:
-      POSTGRES_DB: "teacher"
-      POSTGRES_USER: "teacher"
-      POSTGRES_PASSWORD: "teacher"
+      POSTGRES_DB: "Vyshegorodtseva205"
+      POSTGRES_USER: "Vyshegorodtseva205"
+      POSTGRES_PASSWORD: "Vyshegorodtseva205"
       PGDATA: "/var/lib/postgresql/data/pgdata"
     volumes:
-      - docker/db/scripts:/docker-entrypoint-initdb.d
-      - dz:/var/lib/postgresql/data
+      - ./docker/db/scripts/library:/docker-entrypoint-initdb.d
+      - ./docker/db/library:/var/lib/postgresql/data
     ports:
       - "5432:5432"
+
+  hospital:
+    image: postgres:14.5
+    environment:
+      POSTGRES_DB: "Vyshegorodtseva205"
+      POSTGRES_USER: "Vyshegorodtseva205"
+      POSTGRES_PASSWORD: "Vyshegorodtseva205"
+      PGDATA: "/var/lib/postgresql/data/pgdata"
+    volumes:
+      - ./docker/db/scripts:/docker-entrypoint-initdb.d
+      - ./docker/db/hospital:/var/lib/postgresql/data
+    ports:
+      - "5433:5432"
+
+  station:
+    image: postgres:14.5
+    environment:
+      POSTGRES_DB: "Vyshegorodtseva205"
+      POSTGRES_USER: "Vyshegorodtseva205"
+      POSTGRES_PASSWORD: "Vyshegorodtseva205"
+      PGDATA: "/var/lib/postgresql/data/pgdata"
+    volumes:
+      - ./docker/db/scripts:/docker-entrypoint-initdb.d
+      - ./docker/db/station:/var/lib/postgresql/data
+    ports:
+      - "5434:5432"
